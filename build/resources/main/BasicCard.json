@@ -1,0 +1,11 @@
+{ "set": "Basic Cards",
+  "cards":
+  [ { "name": "Copper", "cost": 0, "quantity": 60, "type": "Treasure" },
+    { "name": "Silver", "cost": 3, "quantity": 40, "type": "Treasure" },
+    { "name": "Gold", "cost": 6, "quantity": 30, "type": "Treasure" },
+    { "name": "Estate", "cost": 2, "quantity": 24, "type": "Victory" },
+    { "name": "Duchy", "cost": 5, "quantity": 12, "type": "Victory" },
+    { "name": "Province", "cost": 8, "quantity": 12, "type": "Victory" },
+    { "name": "Curse", "cost": 0, "quantity": 30, "type": "Curse" }
+  ]
+}
