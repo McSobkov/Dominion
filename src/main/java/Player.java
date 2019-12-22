@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Stack;
 
 /**
@@ -57,5 +56,22 @@ public class Player {
      */
     public ArrayList<Card> getHand(){
         return new ArrayList<>(hand);
+    }
+
+    /**
+     * Discards a card from the hand
+     * @param target card being discarded
+     * @return success
+     */
+    public boolean discard(Card target) {
+        boolean successful = false;
+        for(Card card: hand){
+            if(card == target){
+                hand.remove(target);
+                discard.add(target);
+                successful = true;
+            }
+        }
+        return successful;
     }
 }
