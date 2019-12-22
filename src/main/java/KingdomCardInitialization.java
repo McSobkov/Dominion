@@ -48,11 +48,16 @@ public final class KingdomCardInitialization {
     private static Card buildCellar() {
         return new Card.CardBuilder("Cellar", CardType.KINGDOM, TWO_COST)
                 .extraAction(1)
-                .addCardAction((Player p) -> {
-                    ArrayList<Card> hand = p.getHand();
-                    int count = 0;
-                    //TODO this
-                    System.out.println("not complete");
+                .addCardAction(new CardActionListCards() {
+                    @Override
+                    public void invokeAction(ArrayList<Card> selected, Player currentPlayer) {
+                        int draws = selected.size();
+                        if(draws > currentPlayer.getHandSize()) return;
+                        for (Card c: selected) {
+                            assert(currentPlayer.discard(c));
+                        }
+                        currentPlayer.drawCards(draws);
+                    }
                 })
                 .build();
     }
