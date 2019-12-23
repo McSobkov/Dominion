@@ -61,17 +61,24 @@ public class Player {
     /**
      * Discards a card from the hand
      * @param target card being discarded
-     * @return success
      */
-    public boolean discard(Card target) {
-        boolean successful = false;
-        for(Card card: hand){
-            if(card == target){
-                hand.remove(target);
-                discard.add(target);
-                successful = true;
-            }
-        }
-        return successful;
+    public void discard(Card target) {
+        assert(hand.remove(target));
+        discard.add(target);
     }
+
+    public void trash(Card card) {
+        assert(hand.remove(card));
+        trash(card);
+    }
+
+    public void removeFromDiscard(Card card) {
+        assert(discard.remove(card));
+    }
+
+    public void putOnDeck(Card card) {
+        deck.push(card);
+    }
+
+
 }
