@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="BigTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-21T06:01:00" hostname="DESKTOP-5Q0VJJ4" time="0.008">
-  <properties/>
-  <testcase name="cardInitializations" classname="BigTest" time="0.008"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
