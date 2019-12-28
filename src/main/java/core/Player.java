@@ -69,15 +69,27 @@ public class Player {
         discard.add(target);
     }
 
+    /**
+     * Trashes a specific card
+     * @param card being trashed
+     */
     public void trash(Card card) {
         assert(hand.remove(card));
-        trash(card);
+
     }
 
+    /**
+     * Takes a card out of a player's discard pile
+     * @param card being removed from discard
+     */
     public void removeFromDiscard(Card card) {
         assert(discard.remove(card));
     }
 
+    /**
+     * Puts a card onto the player's deck
+     * @param card being put on deck
+     */
     public void putOnDeck(Card card) {
         deck.push(card);
     }

@@ -3,6 +3,9 @@ package core;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Representation for a turn that a player is taking
+ */
 public class Turn {
 
     private ArrayList<Card> actionCardsPlayed;
@@ -12,6 +15,10 @@ public class Turn {
     private int goldForBuy;
     private GameSystem game;
 
+    /**
+     * Constructor for turn
+     * @param game of Dominion being played
+     */
     public Turn(GameSystem game) {
         actionCardsPlayed = new ArrayList<>();
         player = game.getCurrentPlayer();
@@ -21,6 +28,10 @@ public class Turn {
         this.game = game;
     }
 
+    /**
+     * Function to play an action card on a player's turn
+     * @param card that's action is being activated
+     */
     public void playActionCard(Card card) {
         assert (actionsRemaining > 0);
         actionsRemaining += card.getAction();
@@ -40,11 +51,16 @@ public class Turn {
 
     }
 
-
+    /**
+     * @return number of actions remaining
+     */
     public int getActionsRemaining() {
         return actionsRemaining;
     }
 
+    /**
+     * @return number of buys remaining
+     */
     public int getBuysRemaining() {
         return buysRemaining;
     }

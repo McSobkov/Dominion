@@ -36,17 +36,17 @@ public class Dominion {
 
     private static void createAndShowGame() throws IOException {
         // Create and set-up the window.
-        JFrame frame = new JFrame("Core.Dominion");
+        JFrame frame = new JFrame("Dominion");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         //TODO pass actual kingdomcards or refactor Core.GameSystem
-        GameSystem game = new GameSystem(new ArrayList<>());
+        core.GameSystem game = new core.GameSystem(new ArrayList<>());
 
         // Create and set up the content pane.
         DominionPanel dominionPanel = new DominionPanel(game);
         dominionPanel.setOpaque(true);
         game.addListener(dominionPanel);
-       frame.setContentPane(dominionPanel);
+        frame.setContentPane(dominionPanel);
 
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 

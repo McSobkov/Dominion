@@ -3,6 +3,9 @@ package core;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Game System holds essential functionality to Dominion game
+ */
 public class GameSystem {
     private static final int NUM_PLAYERS = 2;
     private static final int STARTING_COPPER = 7;
@@ -68,11 +71,18 @@ public class GameSystem {
         return players;
     }
 
+    /**
+     * Mutator to add new listener to game
+     * @param newListener being added to game
+     */
     public void addListener(ChangeListener newListener) {
         listeners.addListener(newListener);
     }
 
-
+    /**
+     * Accessor for current player
+     * @return player taking their turn
+     */
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
