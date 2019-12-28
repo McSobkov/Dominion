@@ -1,0 +1,455 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>SpotBugs Report</title>
+        <style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+
+		.tablerow0:hover, .tablerow1:hover {
+			background: #aaffaa;
+		}
+
+		.priority-1 {
+		    color: red;
+		    font-weight: bold;
+		}
+		.priority-2 {
+		    color: orange;
+		    font-weight: bold;
+		}
+		.priority-3 {
+		    color: green;
+		    font-weight: bold;
+		}
+		.priority-4 {
+		    color: blue;
+		    font-weight: bold;
+		}
+		</style>
+        <script type="text/javascript">
+			function toggleRow(elid) {
+				if (document.getElementById) {
+					element = document.getElementById(elid);
+					if (element) {
+						if (element.style.display == 'none') {
+							element.style.display = 'block';
+							//window.status = 'Toggle on!';
+						} else {
+							element.style.display = 'none';
+							//window.status = 'Toggle off!';
+						}
+					}
+				}
+			}
+		</script>
+    </head>
+    <body>
+        <h1>
+            <a href="https://spotbugs.github.io/">SpotBugs</a>
+             Report
+        </h1>
+        <h2>Project Information</h2>
+        <p>Project: 
+		</p>
+        <p>SpotBugs version: 3.1.8</p>
+        <p>Code analyzed:</p>
+        <ul>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\BasicCardInitialization.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\Card$CardBuilder.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\Card.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\CardAction.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\CardActionAffectAll.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\CardActionAttack.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\CardActionListCards.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\CardActionReaction.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\CardActionSimple.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\CardActionSingleCard.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\CardActionVictory.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\CardType.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\ChangeListener.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\Dominion.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\GameListeners.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\GameSystem.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$1.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$10.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$11.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$12.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$2.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$3.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$4.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$5.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$6.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$7.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$8.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization$9.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\KingdomCardInitialization.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\Player.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\core\Turn.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\gui\CardImages.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\gui\DominionPanel.class</li>
+            <li>C:\Users\sobko\OneDrive\Desktop\Projects\Dominion\build\classes\java\main\gui\SupplyPanel.class</li>
+        </ul>
+        <p>
+            <br />
+            <br />
+        </p>
+        <h2>Metrics</h2>
+        <p>599 lines of code analyzed,
+	in 34 classes, 
+	in 2 packages.</p>
+        <table width="500" cellpadding="5" cellspacing="2">
+            <tr class="tableheader">
+                <th align="left">Metric</th>
+                <th align="right">Total</th>
+                <th align="right">Density*</th>
+            </tr>
+            <tr class="tablerow0">
+                <td>High Priority Warnings</td>
+                <td align="right" />
+                <td align="right">0.00</td>
+            </tr>
+            <tr class="tablerow1">
+                <td>Medium Priority Warnings</td>
+                <td align="right">8</td>
+                <td align="right">13.36</td>
+            </tr>
+            <tr class="$totalClass">
+                <td>
+                    <b>Total Warnings</b>
+                </td>
+                <td align="right">
+                    <b>8</b>
+                </td>
+                <td align="right">
+                    <b>13.36</b>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <i>(* Defects per Thousand lines of non-commenting source statements)</i>
+        </p>
+        <p>
+            <br />
+            <br />
+        </p>
+        <h2>Contents</h2>
+        <ul>
+            <li>
+                <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+            </li>
+            <li>
+                <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+            </li>
+            <li>
+                <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            </li>
+            <li>
+                <a href="#Details">Details</a>
+            </li>
+        </ul>
+        <h1>Summary</h1>
+        <table width="500" cellpadding="5" cellspacing="2">
+            <tr class="tableheader">
+                <th align="left">Warning Type</th>
+                <th align="right">Number</th>
+            </tr>
+            <tr class="tablerow0">
+                <td>
+                    <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+                </td>
+                <td align="right">4</td>
+            </tr>
+            <tr class="tablerow1">
+                <td>
+                    <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+                </td>
+                <td align="right">3</td>
+            </tr>
+            <tr class="tablerow0">
+                <td>
+                    <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+                </td>
+                <td align="right">1</td>
+            </tr>
+            <tr class="tablerow1">
+                <td>
+                    <b>Total</b>
+                </td>
+                <td align="right">
+                    <b>8</b>
+                </td>
+            </tr>
+        </table>
+        <h1>Warnings</h1>
+        <p>Click on a warning row to see full context information.</p>
+        <h2>
+            <a name="Warnings_CORRECTNESS">Correctness Warnings</a>
+        </h2>
+        <table class="warningtable" width="100%" cellspacing="0">
+            <tr class="tableheader">
+                <th align="left">Code</th>
+                <th align="left">Warning</th>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N65974');">
+                <td>
+                    <span class="priority-2">NP</span>
+                </td>
+                <td>Read of unwritten field imageMap in new gui.CardImages()</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N65974" style="display: none;">
+                        <a href="#NP_UNWRITTEN_FIELD">Bug type NP_UNWRITTEN_FIELD (click for details)</a>
+                        <br />
+                        In class gui.CardImages
+                        <br />
+                        In method new gui.CardImages()
+                        <br />
+                        Field gui.CardImages.imageMap
+                        <br />
+                        At CardImages.java:[line 42]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N66046');">
+                <td>
+                    <span class="priority-2">RCN</span>
+                </td>
+                <td>Nullcheck of paths at line 35 of value previously dereferenced in new gui.CardImages()</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N66046" style="display: none;">
+                        <a href="#RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE">Bug type RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE (click for details)</a>
+                        <br />
+                        In class gui.CardImages
+                        <br />
+                        In method new gui.CardImages()
+                        <br />
+                        Value loaded from paths
+                        <br />
+                        Return value of java.nio.file.Files.walk(Path, FileVisitOption[]) of type java.util.stream.Stream
+                        <br />
+                        At CardImages.java:[line 35]
+                        <br />
+                        Redundant null check at CardImages.java:[line 37]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N65830');">
+                <td>
+                    <span class="priority-2">UwF</span>
+                </td>
+                <td>Unwritten field: core.GameSystem.currentPlayer</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N65830" style="display: none;">
+                        <a href="#UWF_UNWRITTEN_FIELD">Bug type UWF_UNWRITTEN_FIELD (click for details)</a>
+                        <br />
+                        In class core.GameSystem
+                        <br />
+                        Field core.GameSystem.currentPlayer
+                        <br />
+                        At GameSystem.java:[line 87]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N66138');">
+                <td>
+                    <span class="priority-2">UwF</span>
+                </td>
+                <td>Unwritten field: gui.CardImages.imageMap</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N66138" style="display: none;">
+                        <a href="#UWF_UNWRITTEN_FIELD">Bug type UWF_UNWRITTEN_FIELD (click for details)</a>
+                        <br />
+                        In class gui.CardImages
+                        <br />
+                        Field gui.CardImages.imageMap
+                        <br />
+                        At CardImages.java:[line 42]
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <h2>
+            <a name="Warnings_PERFORMANCE">Performance Warnings</a>
+        </h2>
+        <table class="warningtable" width="100%" cellspacing="0">
+            <tr class="tableheader">
+                <th align="left">Code</th>
+                <th align="left">Warning</th>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N65668');">
+                <td>
+                    <span class="priority-2">UrF</span>
+                </td>
+                <td>Unread field: core.Card.cost</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N65668" style="display: none;">
+                        <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+                        <br />
+                        In class core.Card
+                        <br />
+                        Field core.Card.cost
+                        <br />
+                        At Card.java:[line 97]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow0" onclick="toggleRow('N65722');">
+                <td>
+                    <span class="priority-2">UrF</span>
+                </td>
+                <td>Unread field: core.Card.type</td>
+            </tr>
+            <tr class="detailrow0">
+                <td />
+                <td>
+                    <p id="N65722" style="display: none;">
+                        <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+                        <br />
+                        In class core.Card
+                        <br />
+                        Field core.Card.type
+                        <br />
+                        At Card.java:[line 96]
+                    </p>
+                </td>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N65776');">
+                <td>
+                    <span class="priority-2">UrF</span>
+                </td>
+                <td>Unread field: core.GameSystem.trash</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N65776" style="display: none;">
+                        <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+                        <br />
+                        In class core.GameSystem
+                        <br />
+                        Field core.GameSystem.trash
+                        <br />
+                        At GameSystem.java:[line 42]
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <h2>
+            <a name="Warnings_STYLE">Dodgy code Warnings</a>
+        </h2>
+        <table class="warningtable" width="100%" cellspacing="0">
+            <tr class="tableheader">
+                <th align="left">Code</th>
+                <th align="left">Warning</th>
+            </tr>
+            <tr class="tablerow1" onclick="toggleRow('N65884');">
+                <td>
+                    <span class="priority-2">BC</span>
+                </td>
+                <td>Questionable cast from java.util.List&lt;java.lang.String&gt; to java.util.ArrayList in core.KingdomCardInitialization.chooseCards(List)</td>
+            </tr>
+            <tr class="detailrow1">
+                <td />
+                <td>
+                    <p id="N65884" style="display: none;">
+                        <a href="#BC_BAD_CAST_TO_CONCRETE_COLLECTION">Bug type BC_BAD_CAST_TO_CONCRETE_COLLECTION (click for details)</a>
+                        <br />
+                        In class core.KingdomCardInitialization
+                        <br />
+                        In method core.KingdomCardInitialization.chooseCards(List)
+                        <br />
+                        Actual type java.util.List&lt;java.lang.String&gt;
+                        <br />
+                        Expected java.util.ArrayList
+                        <br />
+                        Value loaded from names
+                        <br />
+                        At KingdomCardInitialization.java:[line 32]
+                    </p>
+                </td>
+            </tr>
+        </table>
+        <h1>
+            <a name="Details">Details</a>
+        </h1>
+        <h2>
+            <a name="BC_BAD_CAST_TO_CONCRETE_COLLECTION">BC_BAD_CAST_TO_CONCRETE_COLLECTION: Questionable cast to concrete collection</a>
+        </h2>
+        <p>
+This code casts an abstract collection (such as a Collection, List, or Set)
+to a specific concrete implementation (such as an ArrayList or HashSet).
+This might not be correct, and it may make your code fragile, since
+it makes it harder to switch to other concrete implementations at a future
+point. Unless you have a particular reason to do so, just use the abstract
+collection class.
+</p>
+
+    
+        <h2>
+            <a name="NP_UNWRITTEN_FIELD">NP_UNWRITTEN_FIELD: Read of unwritten field</a>
+        </h2>
+          <p> The program is dereferencing a field that does not seem to ever have a non-null value written to it.
+Unless the field is initialized via some mechanism not seen by the analysis,
+dereferencing this value will generate a null pointer exception.
+</p>
+
+    
+        <h2>
+            <a name="RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE">RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE: Nullcheck of value previously dereferenced</a>
+        </h2>
+        <p> A value is checked here to see whether it is null, but this value can't
+be null because it was previously dereferenced and if it were null a null pointer
+exception would have occurred at the earlier dereference.
+Essentially, this code and the previous dereference
+disagree as to whether this value is allowed to be null. Either the check is redundant
+or the previous dereference is erroneous.</p>
+
+    
+        <h2>
+            <a name="URF_UNREAD_FIELD">URF_UNREAD_FIELD: Unread field</a>
+        </h2>
+          <p> This field is never read.&nbsp; Consider removing it from the class.</p>
+
+    
+        <h2>
+            <a name="UWF_UNWRITTEN_FIELD">UWF_UNWRITTEN_FIELD: Unwritten field</a>
+        </h2>
+          <p> This field is never written.&nbsp; All reads of it will return the default
+value. Check for errors (should it have been initialized?), or remove it if it is useless.</p>
+
+    
+    </body>
+</html>
