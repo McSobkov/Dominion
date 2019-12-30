@@ -27,7 +27,6 @@ public class CardImages {
     private static final int ROWS = 6;
     private static final int TILE_SIZE = 90;
     private HashMap<CardName, BufferedImage> imageMap;
-    //private BufferedImage image = ImageIO.read(new File("src/main/resources/CardImages.png"));
 
         /**
          * Creates a representation of tile images to be used as individuals
@@ -81,7 +80,7 @@ public class CardImages {
          * @return list of tile images
          */
         public HashMap<CardName, BufferedImage> getImage(){
-            return imageMap;
+            return (HashMap<CardName, BufferedImage>) imageMap.clone();
         }
 
 

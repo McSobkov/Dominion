@@ -1,6 +1,7 @@
 package core;
 
 import gui.DominionPanel;
+import gui.KingdomCardSelectionPanel;
 
 import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
@@ -15,15 +16,23 @@ import java.util.ArrayList;
  */
 
 public class Dominion {
-
+    private ArrayList<CardName> kingdomCards;
 
     /**
      * Main method
      * @param args none parsed
      */
     public static void main(String[] args) {
-        /*ArrayList<String> kingdomCards = new ArrayList<>();
-        game.initializeGame(kingdomCards);*/
+
+
+        SwingUtilities.invokeLater(() -> {
+            try {
+                createAndShowCardSelection();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
 
         SwingUtilities.invokeLater(() -> {
             try {
@@ -33,6 +42,20 @@ public class Dominion {
             }
         });
     }
+
+    private static void createAndShowCardSelection() throws IOException {
+        JFrame frame = new JFrame("Card Selection");
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        KingdomCardSelectionPanel kingdomCardSelectionPanel = new KingdomCardSelectionPanel();
+        kingdomCardSelectionPanel.setOpaque(true);
+        frame.setContentPane(kingdomCardSelectionPanel);
+
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        frame.pack();
+        frame.setVisible(true);
+    }
+
 
     private static void createAndShowGame() throws IOException {
         // Create and set-up the window.
@@ -64,7 +87,7 @@ public class Dominion {
 
         // Display the window.
         frame.pack();
-        frame.setVisible(true);
+        frame.setVisible(false);
 
     }
 }
