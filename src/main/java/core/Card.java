@@ -10,7 +10,7 @@ public final class Card {
      */
     public static class CardBuilder{
 
-        private String name;
+        private CardName name;
         private CardType type;
         private int cost;
 
@@ -26,7 +26,7 @@ public final class Card {
          * @param type of Core.Card
          * @param cost of Core.Card
          */
-        public CardBuilder(String name, CardType type, int cost){
+        public CardBuilder(CardName name, CardType type, int cost){
             this.name = name;
             this.type = type;
             this.cost = cost;
@@ -109,7 +109,7 @@ public final class Card {
 
     }
 
-    private String name;
+    private CardName name;
     private CardType type;
     private int cost;
 
@@ -125,7 +125,7 @@ public final class Card {
      * Accessor card name
      * @return name of card
      */
-    public String getName() { return name; }
+    public CardName getName() { return name; }
 
     /**
      * Accessor for gold gained on turn

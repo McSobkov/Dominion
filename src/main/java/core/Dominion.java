@@ -38,9 +38,20 @@ public class Dominion {
         // Create and set-up the window.
         JFrame frame = new JFrame("Dominion");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        ArrayList<String> cards = new ArrayList<>();
+        cards.add("Festival");
+        cards.add("Village");
+        cards.add("Library");
+        cards.add("Market");
+        cards.add("Merchant");
+        cards.add("Militia");
+        cards.add("Mine");
+        cards.add("Moat");
+        cards.add("Moneylender");
+        cards.add("Smithy");
 
         //TODO pass actual kingdomcards or refactor Core.GameSystem
-        core.GameSystem game = new core.GameSystem(new ArrayList<>());
+        core.GameSystem game = new core.GameSystem(cards);
 
         // Create and set up the content pane.
         DominionPanel dominionPanel = new DominionPanel(game);
@@ -57,3 +68,4 @@ public class Dominion {
 
     }
 }
+

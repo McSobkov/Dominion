@@ -11,7 +11,7 @@ public class GameSystem {
     private static final int STARTING_COPPER = 7;
     private static final int STARTING_ESTATE = 3;
 
-
+    private ArrayList<CardName> kingdomCardNames;
 
     private ArrayList<Card> gameCards;
     private ArrayList<Card> trash;
@@ -29,16 +29,15 @@ public class GameSystem {
     }
 
 
-
-
-    /**
-     * Initializes Game
-     * @param kingdomCardNames in game
-     */
-    public void initializeGame(ArrayList<String> kingdomCardNames){
+    private void initializeGame(ArrayList<String> kingdomCardNamesString){
         //TODO gamecards needs to be done properly
         gameCards = new ArrayList<>(BasicCardInitialization.generateStartingCards());
-        gameCards.addAll(new KingdomCardInitialization().chooseCards(kingdomCardNames));
+        ArrayList<CardName> cardNames = new ArrayList<>();
+        for(String s: kingdomCardNamesString) {
+            cardNames.add(CardName.nameFromString(s));
+        }
+        kingdomCardNames = cardNames;
+        gameCards.addAll(new KingdomCardInitialization().chooseCards(cardNames));
         trash = new ArrayList<>();
         players = new LinkedList<>();
         initializePlayers();
@@ -85,5 +84,13 @@ public class GameSystem {
      */
     public Player getCurrentPlayer() {
         return currentPlayer;
+    }
+
+    /**
+     *
+     * @return names of kingdom cards as string
+     */
+    public ArrayList<CardName> getKingdomCardNames() {
+        return kingdomCardNames;
     }
 }
