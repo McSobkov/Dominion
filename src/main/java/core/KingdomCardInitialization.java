@@ -2,7 +2,7 @@ package core;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Stack;
 
 /**
  * Initializes kingdom cards
@@ -14,8 +14,9 @@ public final class KingdomCardInitialization {
     private static final int FOUR_COST = 4;
     private static final int FIVE_COST = 5;
     private static final int SIX_COST = 6;
-    private static final int NUM_PILES = 10;
-    private static final int ACTION_COUNT = 10;
+
+    private static final int DEFAULT_ACTION_COUNT = 10;
+    private static final int ACTION_VICTORY_COUNT = 12;
 
 
     private static final int MAX_CHAPEL_DISCARDS = 4;
@@ -24,47 +25,96 @@ public final class KingdomCardInitialization {
 
     /**
      *
-     * @param names of kingdom cards
+     * @param name of kingdom cards
      * @return list of cards in kingdom
      */
-    public List<Card> chooseCards(List<CardName> names){
-        //assert(names.size() == NUM_PILES);
-        ArrayList<CardName> cardNames = (ArrayList<CardName>) names;
-        ArrayList<Card> gameCards = new ArrayList<>();
-        for(CardName s: cardNames){
-
-            switch (s){
-                default: break;
-                case ARTISAN: gameCards.add(buildArtisan()); break;
-                case BANDIT: gameCards.add(buildBandit()); break;
-                case BUREAUCRAT: gameCards.add(buildBureaucrat()); break;
-                case CELLAR: gameCards.add(buildCellar()); break;
-                case CHAPEL: gameCards.add(buildChapel()); break;
-                case COUNCIL_ROOM: gameCards.add(buildCouncilRoom()); break;
-                case GARDENS: gameCards.add(buildGardens()); break;
-                case FESTIVAL: gameCards.add(buildFestival()); break;
-                case HARBINGER: gameCards.add(buildHarbinger()); break;
-                case LABORATORY: gameCards.add(buildLaboratory()); break;
-                case LIBRARY: gameCards.add(buildLibrary()); break;
-                case MARKET: gameCards.add(buildMarket()); break;
-                case MERCHANT: gameCards.add(buildMerchant()); break;
-                case MILITIA: gameCards.add(buildMilitia()); break;
-                case MINE: gameCards.add(buildMine()); break;
-                case MOAT: gameCards.add(buildMoat()); break;
-                case MONEYLENDER: gameCards.add(buildMoneylender()); break;
-                case POACHER: gameCards.add(buildPoacher()); break;
-                case REMODEL: gameCards.add(buildRemodel()); break;
-                case SENTRY: gameCards.add(buildSentry()); break;
-                case SMITHY: gameCards.add(buildSmithy()); break;
-                case THRONE_ROOM: gameCards.add(buildThroneRoom()); break;
-                case VASSAL: gameCards.add(buildVassal()); break;
-                case VILLAGE: gameCards.add(buildVillage()); break;
-                case WITCH: gameCards.add(buildWitch()); break;
-                case WORKSHOP: gameCards.add(buildWorkshop()); break;
-
-
+    public Stack<Card> chooseCards(CardName name){
+            Stack<Card> gameCards = new Stack<>();
+            for(int i = 0; i < DEFAULT_ACTION_COUNT; i++) {
+                switch (name) {
+                    default:
+                        break;
+                    case ARTISAN:
+                        gameCards.push(buildArtisan());
+                        break;
+                    case BANDIT:
+                        gameCards.push(buildBandit());
+                        break;
+                    case BUREAUCRAT:
+                        gameCards.push(buildBureaucrat());
+                        break;
+                    case CELLAR:
+                        gameCards.push(buildCellar());
+                        break;
+                    case CHAPEL:
+                        gameCards.push(buildChapel());
+                        break;
+                    case COUNCIL_ROOM:
+                        gameCards.push(buildCouncilRoom());
+                        break;
+                    case GARDENS:
+                        gameCards.push(buildGardens());
+                        break;
+                    case FESTIVAL:
+                        gameCards.push(buildFestival());
+                        break;
+                    case HARBINGER:
+                        gameCards.push(buildHarbinger());
+                        break;
+                    case LABORATORY:
+                        gameCards.push(buildLaboratory());
+                        break;
+                    case LIBRARY:
+                        gameCards.push(buildLibrary());
+                        break;
+                    case MARKET:
+                        gameCards.push(buildMarket());
+                        break;
+                    case MERCHANT:
+                        gameCards.push(buildMerchant());
+                        break;
+                    case MILITIA:
+                        gameCards.push(buildMilitia());
+                        break;
+                    case MINE:
+                        gameCards.push(buildMine());
+                        break;
+                    case MOAT:
+                        gameCards.push(buildMoat());
+                        break;
+                    case MONEYLENDER:
+                        gameCards.push(buildMoneylender());
+                        break;
+                    case POACHER:
+                        gameCards.push(buildPoacher());
+                        break;
+                    case REMODEL:
+                        gameCards.push(buildRemodel());
+                        break;
+                    case SENTRY:
+                        gameCards.push(buildSentry());
+                        break;
+                    case SMITHY:
+                        gameCards.push(buildSmithy());
+                        break;
+                    case THRONE_ROOM:
+                        gameCards.push(buildThroneRoom());
+                        break;
+                    case VASSAL:
+                        gameCards.push(buildVassal());
+                        break;
+                    case VILLAGE:
+                        gameCards.push(buildVillage());
+                        break;
+                    case WITCH:
+                        gameCards.push(buildWitch());
+                        break;
+                    case WORKSHOP:
+                        gameCards.push(buildWorkshop());
+                        break;
+                }
             }
-        }
+
         return gameCards;
     }
 

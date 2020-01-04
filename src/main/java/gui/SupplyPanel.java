@@ -86,14 +86,15 @@ public class SupplyPanel extends JPanel {
     private void setupKingdom() {
         kingdom = new JPanel();
         kingdom.setLayout(new GridLayout(KINGDOM_ROWS, KINGDOM_COLS));
-        kingdomSpots = new JButton[KINGDOM_COLS][KINGDOM_ROWS];
+        kingdomSpots = new JButton[KINGDOM_ROWS][KINGDOM_COLS];
         ArrayList<CardName> cardNames = gameSystem.getKingdomCardNames();
         int count = 0;
-        for(int i = 0; i < KINGDOM_COLS; i++) {
-            for(int j = 0; j < KINGDOM_ROWS; j++) {
+        for(int i = 0; i < KINGDOM_ROWS; i++) {
+            for(int j = 0; j < KINGDOM_COLS; j++) {
                 kingdomSpots[i][j] = new JButton();
                 kingdomSpots[i][j].setBorder(null);
-                CardName currentCard = cardNames.get(count++);
+                CardName currentCard = cardNames.get(count);
+                count++;
                 kingdomSpots[i][j].setIcon(new ImageIcon(mainPanel.getImage(currentCard)));
                 kingdom.add(kingdomSpots[i][j]);
             }

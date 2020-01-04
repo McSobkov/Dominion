@@ -3,15 +3,13 @@ package gui;
 import core.CardName;
 
 import javax.swing.*;
+
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,9 +20,15 @@ public class KingdomCardSelectionPanel extends JPanel {
     private CardImages images;
     private ArrayList<CardName> chosenCards;
 
-    public KingdomCardSelectionPanel() throws IOException {
+    /**
+     * Constructor for card selection panel
+     * @throws IOException cards not found
+     * @param frame being used
+     */
+    public KingdomCardSelectionPanel(JFrame frame) throws IOException {
         this.setLayout(new FlowLayout());
         chosenCards = new ArrayList<>();
+
 
         HashSet<CardName> baseCardNames = new HashSet<>();
         baseCardNames.add(CardName.COPPER);
@@ -46,6 +50,7 @@ public class KingdomCardSelectionPanel extends JPanel {
                 if(chosenCards.indexOf(c) == -1) {
                     chosenCards.add((CardName) c);
                     button.setVisible(false);
+                    if (chosenCards.size() == 10) frame.setVisible(false);
                 }
                 else{
                     chosenCards.remove(c);
@@ -63,5 +68,14 @@ public class KingdomCardSelectionPanel extends JPanel {
             button.setIcon(new ImageIcon(scaledImg));
             this.add(button);
         }
+    }
+
+
+    /**
+     *
+     * @return a
+     */
+    public ArrayList<CardName> getCardName() {
+        return chosenCards;
     }
 }
