@@ -2,6 +2,7 @@ package core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Cards in every game
@@ -37,29 +38,30 @@ public final class BasicCardInitialization {
      *
      * @return the basic cards
      */
-    public static List<Card> generateStartingCards(){
-        ArrayList<Card> gameCards = new ArrayList<>();
-        gameCards.add(new Card.CardBuilder(CardName.COPPER, CardType.TREASURE, 0)
-                .build());
+    public static List<Stack<Card>> generateStartingCards(){
+        ArrayList<Stack<Card>> gameCards = new ArrayList<>();
+        gameCards.add(makeMultiple(COPPER_COUNT, CardName.COPPER, CardType.TREASURE, 0));
 
-        gameCards.add(new Card.CardBuilder(CardName.SILVER, CardType.TREASURE,  3)
-                .build());
+        gameCards.add(makeMultiple(SILVER_COUNT, CardName.SILVER, CardType.TREASURE,  3));
 
-        gameCards.add(new Card.CardBuilder(CardName.GOLD, CardType.TREASURE, 6)
-                .build());
+        gameCards.add(makeMultiple(GOLD_COUNT, CardName.GOLD, CardType.TREASURE, 6));
 
-        gameCards.add(new Card.CardBuilder(CardName.CURSE, CardType.CURSE, 0)
-                .build());
+        gameCards.add(makeMultiple(CURSE_COUNT, CardName.CURSE, CardType.CURSE, 0));
 
-        gameCards.add(new Card.CardBuilder(CardName.ESTATE, CardType.VICTORY,  2)
-                .build());
+        gameCards.add(makeMultiple(ESTATE_COUNT, CardName.ESTATE, CardType.VICTORY,  2));
 
-        gameCards.add(new Card.CardBuilder(CardName.DUCHY, CardType.VICTORY,  5)
-                .build());
+        gameCards.add(makeMultiple(DUCHY_COUNT, CardName.DUCHY, CardType.VICTORY,  5));
 
-        gameCards.add(new Card.CardBuilder(CardName.PROVINCE, CardType.VICTORY, 8)
-                .build());
+        gameCards.add(makeMultiple(PROVINCE_COUNT, CardName.PROVINCE, CardType.VICTORY, 8));
 
         return gameCards;
+    }
+
+    private static Stack<Card> makeMultiple(int count, CardName name, CardType type, int cost){
+        Stack<Card> currentStack = new Stack<>();
+        for(int i = 0; i < count; i++) {
+            currentStack.push(new Card.CardBuilder(name, type, cost).build());
+        }
+        return currentStack;
     }
 }

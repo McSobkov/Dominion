@@ -1,7 +1,9 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * Game System holds essential functionality to Dominion game
@@ -12,8 +14,7 @@ public class GameSystem {
     private static final int STARTING_ESTATE = 3;
 
     private ArrayList<CardName> kingdomCardNames;
-
-    private ArrayList<Card> gameCards;
+    private HashMap<CardName, Stack<Card>> gameCards;
     private ArrayList<Card> trash;
     private LinkedList<Player> players;
     private Player currentPlayer;
@@ -23,21 +24,22 @@ public class GameSystem {
      * Constructor for Core.GameSystem
      * @param kingdomCardNames being used for the game
      */
-    public GameSystem(ArrayList<String> kingdomCardNames){
+    public GameSystem(ArrayList<CardName> kingdomCardNames){
         listeners = new GameListeners();
         initializeGame(kingdomCardNames);
     }
 
 
-    private void initializeGame(ArrayList<String> kingdomCardNamesString){
-        //TODO gamecards needs to be done properly
-        gameCards = new ArrayList<>(BasicCardInitialization.generateStartingCards());
-        ArrayList<CardName> cardNames = new ArrayList<>();
-        for(String s: kingdomCardNamesString) {
-            cardNames.add(CardName.nameFromString(s));
+    private void initializeGame(ArrayList<CardName> kingdomCardNames){
+        this.kingdomCardNames = kingdomCardNames;
+        gameCards = new HashMap<>();
+        ArrayList<Stack<Card>> basicCards = (ArrayList<Stack<Card>>) BasicCardInitialization.generateStartingCards();
+        for(Stack<Card> s: basicCards) gameCards.put(s.peek().getName(), s);
+        KingdomCardInitialization kingdomCardInitialization= new KingdomCardInitialization();
+        for(CardName name: this.kingdomCardNames) {
+            Stack<Card> s = kingdomCardInitialization.chooseCards(name);
+            gameCards.put(name, s);
         }
-        kingdomCardNames = cardNames;
-        gameCards.addAll(new KingdomCardInitialization().chooseCards(cardNames));
         trash = new ArrayList<>();
         players = new LinkedList<>();
         initializePlayers();
@@ -47,10 +49,22 @@ public class GameSystem {
         for(int i = 0; i < NUM_PLAYERS; i++){
             players.add(new Player());
         }
-        //TODO gain actual cards
         for(Player p: players){
-            p.gain(gameCards.get(0));
-            p.gain(gameCards.get(0));
+            giveInitialCards(p);
+        }
+        currentPlayer = players.pollFirst();
+        players.add(currentPlayer);
+    }
+
+    private void giveInitialCards(Player p) {
+        Stack<Card> copper = gameCards.get(CardName.COPPER);
+        for(int i = 0; i < STARTING_COPPER; i++) {
+            p.gain(copper.pop());
+        }
+
+        Stack<Card> estate = gameCards.get(CardName.ESTATE);
+        for(int i = 0; i < STARTING_ESTATE; i++) {
+            p.gain(estate.pop());
         }
     }
 
@@ -58,7 +72,7 @@ public class GameSystem {
      * Accessor for cards in game
      * @return cards in game
      */
-    public ArrayList<Card> getGameCards() {
+    public HashMap<CardName, Stack<Card>> getGameCards() {
         return gameCards;
     }
 
@@ -88,7 +102,7 @@ public class GameSystem {
 
     /**
      *
-     * @return names of kingdom cards as string
+     * @return names of kingdom cards as enum
      */
     public ArrayList<CardName> getKingdomCardNames() {
         return kingdomCardNames;
