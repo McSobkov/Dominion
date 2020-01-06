@@ -113,10 +113,6 @@ public class GameSystem {
     }
 
     public void start() {
-        boolean gameOver = false;
-        while(!gameOver) {
-            Turn turn = new Turn(this);
-            gameOver = turn.take();
-        }
+        new Turn(this).take();
     }
 }

@@ -12,9 +12,10 @@ public class PlayerScroller extends JScrollPane {
         super(playerArea);
         JPanel view = new JPanel();
         ArrayList<JButton> hand = playerArea.getHand();
-        view.setLayout(new GridLayout(1, hand.size()));
+        //view.setLayout(new GridLayout(1, hand.size()));
 
         for (JButton jButton : hand) {
+            jButton.setBorder(null);
             view.add(jButton);
         }
 

@@ -50,7 +50,6 @@ public class DominionPanel extends JPanel implements ChangeListener {
         this.remove(playerScroller);
         playerScroller = new PlayerScroller(playerArea);
         this.add(playerScroller, BorderLayout.SOUTH);
-        //return playerScroller.getScroller();
     }
 
     @Override

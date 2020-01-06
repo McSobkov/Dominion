@@ -102,4 +102,8 @@ public class Player {
     public void setTurn() {
         going = !going;
     }
+
+    public void discardAll() {
+        for(Card card: hand) discard(card);
+    }
 }

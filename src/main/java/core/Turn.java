@@ -74,6 +74,7 @@ public class Turn {
 
 
         player.setTurn();
+        player.discardAll();
         return false;
     }
 }
