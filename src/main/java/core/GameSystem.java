@@ -100,11 +100,23 @@ public class GameSystem {
         return currentPlayer;
     }
 
+    public void callDrawListener(Card c) {
+        listeners.updateDraw(c);
+    }
+
     /**
      *
      * @return names of kingdom cards as enum
      */
     public ArrayList<CardName> getKingdomCardNames() {
         return kingdomCardNames;
+    }
+
+    public void start() {
+        boolean gameOver = false;
+        while(!gameOver) {
+            Turn turn = new Turn(this);
+            gameOver = turn.take();
+        }
     }
 }

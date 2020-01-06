@@ -1,10 +1,12 @@
 package gui;
 
+import core.Card;
 import core.CardName;
 import core.ChangeListener;
 import core.GameSystem;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,6 +18,9 @@ public class DominionPanel extends JPanel implements ChangeListener {
     private GameSystem game;
     private HashMap<CardName, BufferedImage> cardImages;
 
+    private CurrentPlayerArea playerArea;
+    private PlayerScroller playerScroller;
+
     /**
      * Constructor for Dominion Panel
      * @param game being used with GUI
@@ -24,8 +29,14 @@ public class DominionPanel extends JPanel implements ChangeListener {
     public DominionPanel(GameSystem game) throws IOException {
         this.game = game;
         cardImages = new CardImages().getImage();
-        JPanel supplyPanel = new SupplyPanel(this, game);
-        this.add(supplyPanel);
+
+
+        setLayout(new BorderLayout());
+        add(new SupplyPanel(cardImages, game), BorderLayout.NORTH);
+
+        playerArea = new CurrentPlayerArea(cardImages);
+        playerScroller = new PlayerScroller(playerArea);
+        this.add(playerScroller, BorderLayout.SOUTH);
     }
 
         BufferedImage getImage(CardName name) {
@@ -35,4 +46,20 @@ public class DominionPanel extends JPanel implements ChangeListener {
         }
 
 
+    private void updatePlayerArea() {
+        this.remove(playerScroller);
+        playerScroller = new PlayerScroller(playerArea);
+        this.add(playerScroller, BorderLayout.SOUTH);
+        //return playerScroller.getScroller();
+    }
+
+    @Override
+    public void drawCard(Card c) {
+        playerArea.draw(c);
+        updatePlayerArea();
+    }
+
+    HashMap<CardName, BufferedImage> getCardImages() {
+        return cardImages;
+    }
 }

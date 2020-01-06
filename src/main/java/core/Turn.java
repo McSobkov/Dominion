@@ -22,6 +22,7 @@ public class Turn {
     public Turn(GameSystem game) {
         actionCardsPlayed = new ArrayList<>();
         player = game.getCurrentPlayer();
+        player.setTurn();
         actionsRemaining = 1;
         buysRemaining = 1;
         goldForBuy = 0;
@@ -38,6 +39,7 @@ public class Turn {
         buysRemaining += card.getBuy();
         goldForBuy += card.getGold();
         player.drawCards(card.getDraw());
+
         CardAction action = card.getCardAction();
         if (action instanceof CardActionSimple) {
             ((CardActionSimple) action).invokeAction(player);
@@ -48,7 +50,7 @@ public class Turn {
             LinkedList<Player> playersAffected = game.getPlayers();
             actionAffectAll.affectAll(playersAffected);
         }
-
+        //Rest of interfaces
     }
 
     /**
@@ -66,4 +68,12 @@ public class Turn {
     }
 
 
+    public boolean take() {
+        player.drawCards(5);
+        for(Card c: player.getHand()) game.callDrawListener(c);
+
+
+        player.setTurn();
+        return false;
+    }
 }

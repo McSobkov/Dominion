@@ -58,14 +58,8 @@ public class KingdomCardSelectionPanel extends JPanel {
                 }
             });
             BufferedImage img = images.getImage().get(c);
-            BufferedImage scaledImg = new BufferedImage(
-                    3*img.getWidth()/4,
-                    3*img.getHeight()/4,
-                    img.getType());
-            AffineTransform at = AffineTransform.getScaleInstance(.75,.75);
-            AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
-            op.filter(img, scaledImg);
-            button.setIcon(new ImageIcon(scaledImg));
+            //BufferedImage scaledImg = CardImages.scaleDownImage(img);
+            button.setIcon(new ImageIcon(img));
             this.add(button);
         }
     }

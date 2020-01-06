@@ -14,6 +14,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Display for the supply
@@ -27,17 +28,18 @@ public class SupplyPanel extends JPanel {
     private JPanel treasury;
     private JPanel kingdom;
     private JPanel victory;
-    private DominionPanel mainPanel;
+    private HashMap<CardName, BufferedImage> images;
     private JButton[][] kingdomSpots;
 
     /**
      * Constructor for the display for the supply
-     * @param mainPanel the main panel of the game
+     * @param images images used in the game
      * @param gameSystem the instance of the game being played
      */
-    public SupplyPanel(DominionPanel mainPanel, GameSystem gameSystem) {
+    public SupplyPanel(HashMap<CardName, BufferedImage> images,
+                       GameSystem gameSystem) {
         this.setLayout(new FlowLayout());
-        this.mainPanel = mainPanel;
+        this.images = images;
         this.gameSystem = gameSystem;
 
 
@@ -65,9 +67,9 @@ public class SupplyPanel extends JPanel {
         province.setBorder(null);
 
 
-        BufferedImage rotatedEstate = CardImages.rotateClockwise(mainPanel.getImage(CardName.ESTATE), 1);
-        BufferedImage rotatedDuchy = CardImages.rotateClockwise(mainPanel.getImage(CardName.DUCHY), 1);
-        BufferedImage rotatedProvince = CardImages.rotateClockwise(mainPanel.getImage(CardName.PROVINCE), 1);
+        BufferedImage rotatedEstate = CardImages.rotateClockwise(images.get(CardName.ESTATE), 1);
+        BufferedImage rotatedDuchy = CardImages.rotateClockwise(images.get(CardName.DUCHY), 1);
+        BufferedImage rotatedProvince = CardImages.rotateClockwise(images.get(CardName.PROVINCE), 1);
 
 
         estate.setIcon(new ImageIcon(rotatedEstate));
@@ -95,7 +97,7 @@ public class SupplyPanel extends JPanel {
                 kingdomSpots[i][j].setBorder(null);
                 CardName currentCard = cardNames.get(count);
                 count++;
-                kingdomSpots[i][j].setIcon(new ImageIcon(mainPanel.getImage(currentCard)));
+                kingdomSpots[i][j].setIcon(new ImageIcon(images.get(currentCard)));
                 kingdom.add(kingdomSpots[i][j]);
             }
         }
@@ -115,10 +117,10 @@ public class SupplyPanel extends JPanel {
         copper.setBorder(null);
         curse.setBorder(null);
 
-        BufferedImage rotatedGold = CardImages.rotateClockwise(mainPanel.getImage(CardName.GOLD), 3);
-        BufferedImage rotatedSilver = CardImages.rotateClockwise(mainPanel.getImage(CardName.SILVER), 3);
-        BufferedImage rotatedCopper = CardImages.rotateClockwise(mainPanel.getImage(CardName.COPPER), 3);
-        BufferedImage rotatedCurse = CardImages.rotateClockwise(mainPanel.getImage(CardName.CURSE), 3);
+        BufferedImage rotatedGold = CardImages.rotateClockwise(images.get(CardName.GOLD), 3);
+        BufferedImage rotatedSilver = CardImages.rotateClockwise(images.get(CardName.SILVER), 3);
+        BufferedImage rotatedCopper = CardImages.rotateClockwise(images.get(CardName.COPPER), 3);
+        BufferedImage rotatedCurse = CardImages.rotateClockwise(images.get(CardName.CURSE), 3);
 
         gold.setIcon(new ImageIcon(rotatedGold));
         silver.setIcon(new ImageIcon(rotatedSilver));

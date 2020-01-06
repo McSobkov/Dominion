@@ -11,6 +11,7 @@ public class Player {
     private Stack<Card> deck;
     private ArrayList<Card> hand;
     private ArrayList<Card> discard;
+    private boolean going;
 
     /**
      * Core.Player of the game
@@ -19,6 +20,7 @@ public class Player {
         deck = new Stack<>();
         hand = new ArrayList<>();
         discard = new ArrayList<>();
+        going = false;
     }
 
     public int getDeckSize() { return deck.size(); }
@@ -39,7 +41,9 @@ public class Player {
     public void drawCards(int draws){
         for(int i = 0; i < draws; i++){
             if(deck.empty()) reshuffle();
-            hand.add(deck.pop());
+            Card drawn = deck.pop();
+            hand.add(drawn);
+
         }
     }
 
@@ -95,4 +99,7 @@ public class Player {
     }
 
 
+    public void setTurn() {
+        going = !going;
+    }
 }

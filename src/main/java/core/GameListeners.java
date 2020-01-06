@@ -19,7 +19,11 @@ public class GameListeners {
      * Mutator method for Game Listeners
      * @param newListener being added for the game
      */
-    public void addListener(ChangeListener newListener) {
+    void addListener(ChangeListener newListener) {
         listeners.add(newListener);
+    }
+
+    void updateDraw(Card card) {
+        for(ChangeListener changeListener: listeners) changeListener.drawCard(card);
     }
 }

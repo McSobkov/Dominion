@@ -3,7 +3,7 @@ package gui;
 import core.CardName;
 
 import javax.imageio.ImageIO;
-import javax.swing.UIManager;
+import javax.swing.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.Graphics2D;
@@ -45,6 +45,7 @@ public class CardImages {
             for(Path p: fileNames){
                 CardName nameOfPath = CardName.nameFromString(p.toString().substring(19, p.toString().indexOf(".jpg")));
                 BufferedImage img = ImageIO.read(new File(p.toString()));
+                img = scaleDownImage(img);
                 imageMap.put(nameOfPath, img);
             }
 
@@ -64,8 +65,8 @@ public class CardImages {
             AffineTransform at = AffineTransform.getQuadrantRotateInstance(n,width / 2.0,height / 2.0);
             double x = at.getTranslateX();
             double y = at.getTranslateY();
-            if(n == 1) at.translate(-60,-60);
-            else if(n == 3) at.translate(60,60);
+            if(n == 1) at.translate(-45,-45);
+            else if(n == 3) at.translate(45,45);
             AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
 
             BufferedImage dest = new BufferedImage(height, width, src.getType());
@@ -81,6 +82,17 @@ public class CardImages {
          */
         public HashMap<CardName, BufferedImage> getImage(){
             return (HashMap<CardName, BufferedImage>) imageMap.clone();
+        }
+
+        private BufferedImage scaleDownImage(BufferedImage img) {
+            BufferedImage scaledImg = new BufferedImage(
+                    3*img.getWidth()/4,
+                    3*img.getHeight()/4,
+                    img.getType());
+            AffineTransform at = AffineTransform.getScaleInstance(.75,.75);
+            AffineTransformOp op = new AffineTransformOp(at, AffineTransformOp.TYPE_BILINEAR);
+            op.filter(img, scaledImg);
+            return scaledImg;
         }
 
 
